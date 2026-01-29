@@ -62,7 +62,6 @@ const props = defineProps({
 
 const isMe = (nickname) => props.currentUser?.nickname === nickname
 
-// Auto scroll simplificado
 const containerRef = ref(null)
 const isAtBottom = ref(true)
 
@@ -92,7 +91,6 @@ watch(() => props.messages.length, () => {
   if (isAtBottom.value) scrollToBottom()
 })
 
-// Listener para scroll automático al volver a la ventana
 const handleShouldScrollToBottom = () => {
   scrollToBottom(true)
 }
@@ -101,7 +99,6 @@ onMounted(() => {
   window.addEventListener('shouldScrollToBottom', handleShouldScrollToBottom)
 })
 
-// Watch para cuando el container esté disponible
 watch(containerRef, (newContainer) => {
   if (newContainer) {
     newContainer.addEventListener('scroll', handleScroll)

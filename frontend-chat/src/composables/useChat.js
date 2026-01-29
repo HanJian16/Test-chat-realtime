@@ -1,4 +1,3 @@
-// composables/useChat.js
 import { computed, ref, onMounted, onUnmounted } from 'vue'
 import { useSocket, useSocketEmit } from './useSocket'
 import { useChatStore } from '../stores/chat'
@@ -111,7 +110,6 @@ export function useChat() {
     clearTypingAll()
   })
 
-  // ✅ Multi-typing listener
   useSocket('typing', (payload) => {
     console.log('[typing]', payload)
     const nick = payload?.nickname
@@ -167,14 +165,10 @@ export function useChat() {
     currentUser,
     onlineUsers,
     isConnected,
-
-    // ✅ export
     typingUsers,
-
     isLoading,
     isLoadingHistory,
     error,
-
     sendMessage,
     joinChat,
     leaveChat,

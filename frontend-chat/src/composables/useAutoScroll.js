@@ -1,4 +1,3 @@
-// composables/useAutoScroll.js
 import { ref, watch, nextTick } from 'vue'
 
 /**
@@ -18,9 +17,6 @@ export function useAutoScroll(trigger, options = {}) {
   const isAtBottom = ref(true)
   const userHasScrolled = ref(false)
 
-  /**
-   * Verifica si el usuario está cerca del fondo
-   */
   const checkIfAtBottom = () => {
     if (!containerRef.value) return false
 
@@ -31,9 +27,6 @@ export function useAutoScroll(trigger, options = {}) {
     return isAtBottom.value
   }
 
-  /**
-   * Scrollea al fondo del contenedor
-   */
   const scrollToBottom = async (force = false) => {
     await nextTick()
 
@@ -52,9 +45,6 @@ export function useAutoScroll(trigger, options = {}) {
     }
   }
 
-  /**
-   * Handler para evento scroll
-   */
   const handleScroll = () => {
     checkIfAtBottom()
 
@@ -64,18 +54,12 @@ export function useAutoScroll(trigger, options = {}) {
     }
   }
 
-  /**
-   * Observa cambios en el trigger (ej: nuevos mensajes)
-   */
   watch(trigger, () => {
     if (enabled) {
       scrollToBottom()
     }
   })
 
-  /**
-   * Configura listeners cuando se monta
-   */
   watch(containerRef, (newContainer, oldContainer) => {
     if (oldContainer) {
       oldContainer.removeEventListener('scroll', handleScroll)
@@ -95,9 +79,6 @@ export function useAutoScroll(trigger, options = {}) {
   }
 }
 
-/**
- * Hook simplificado para auto-scroll básico
- */
 export function useSimpleAutoScroll(trigger) {
   const containerRef = ref(null)
 

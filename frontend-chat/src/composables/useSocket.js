@@ -1,4 +1,3 @@
-// composables/useSocket.js
 import { onMounted, onUnmounted, ref } from 'vue'
 import { socket } from '../services/socket'
 

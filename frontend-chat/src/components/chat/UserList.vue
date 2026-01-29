@@ -61,7 +61,6 @@ defineEmits(['close'])
 const chatStore = useChatStore()
 const isMobile = ref(false)
 
-// Computed
 const users = computed(() => chatStore.users)
 const currentUser = computed(() => chatStore.user)
 
@@ -91,7 +90,6 @@ const sortedUsers = computed(() => {
   })
 })
 
-// Methods
 const isCurrentUser = (nickname) => {
   return chatStore.isCurrentUser(nickname)
 }

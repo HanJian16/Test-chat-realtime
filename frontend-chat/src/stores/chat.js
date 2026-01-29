@@ -1,4 +1,3 @@
-// stores/chat.js
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { createUser } from '../models/user.model'
